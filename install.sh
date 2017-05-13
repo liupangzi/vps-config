@@ -1,7 +1,7 @@
 #!/bin/sh
 
 OPENRESTY_VERSION="1.11.2.2"
-PHP_VERSION="7.1.0"
+PHP_VERSION="7.1.5"
 
 yum install -y epel-release
 yum update -y
