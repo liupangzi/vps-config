@@ -59,6 +59,7 @@ git clone https://github.com/letsencrypt/letsencrypt /opt/letsencrypt
     -d 404.liuchao.me \
     -d blog.liuchao.me \
     -d tech.liuchao.me \
+    -d justice.plus \
     -d www.justice.plus \
     -d demo.justice.plus
 openssl dhparam -out /etc/letsencrypt/dhparams.pem 4096
