@@ -59,6 +59,8 @@ git clone https://github.com/letsencrypt/letsencrypt /opt/letsencrypt
     -d 404.liuchao.me \
     -d blog.liuchao.me \
     -d tech.liuchao.me \
+    -d 718281828459045235.com \
+    -d 2.718281828459045235.com \
     -d justice.plus \
     -d www.justice.plus \
     -d demo.justice.plus
