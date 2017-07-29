@@ -1,7 +1,7 @@
 #!/bin/sh
 
 OPENRESTY_VERSION="1.11.2.2"
-PHP_VERSION="7.1.5"
+PHP_VERSION="7.1.7"
 
 yum install -y epel-release
 yum update -y
@@ -29,7 +29,8 @@ yum install -y \
     libtiff libtiff-devel \
     libmcrypt libmcrypt-devel \
     gd gd-devel \
-    libicu libicu-devel
+    libicu libicu-devel \
+    librdkafka librdkafka-devel \
 
 # checkout code && config
 mkdir -p /var/www/ /data/ /var/log/{nginx,php,mysql,supervisor}
@@ -115,6 +116,14 @@ ln -s /root/vps-config/php/php-fpm.conf /opt/php/etc/php-fpm.conf
 ln -s /root/vps-config/php/php.ini /opt/php/lib/php.ini
 ln -s /root/vps-config/php/cert.pem /opt/php/etc/cert.pem
 chown -R nobody:nobody /opt/php*
+
+### install php-rdkafka
+git clone https://github.com/arnaud-lb/php-rdkafka.git
+cd php-rdkafka
+phpize
+./configure
+make all -j 5
+sudo make install
 
 # install percona
 yum install -y http://www.percona.com/downloads/percona-release/redhat/0.1-3/percona-release-0.1-3.noarch.rpm

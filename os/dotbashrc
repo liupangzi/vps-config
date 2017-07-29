@@ -9,3 +9,6 @@ export PATH=${JAVA_HOME}/bin:/opt/percona-server/bin:/opt/php/bin:/usr/local/go/
 if [ -f /etc/bashrc ]; then
     . /etc/bashrc
 fi
+
+alias ...="cd ../.."
+alias ..="cd .."
