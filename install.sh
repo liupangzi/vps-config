@@ -64,7 +64,7 @@ git clone https://github.com/letsencrypt/letsencrypt /opt/letsencrypt
     -d 2.718281828459045235.com \
     -d justice.plus \
     -d www.justice.plus \
-    -d demo.justice.plus
+    -d admin.justice.plus
 openssl dhparam -out /etc/letsencrypt/dhparams.pem 4096
 
 # install openresty
