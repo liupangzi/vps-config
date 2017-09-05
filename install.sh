@@ -71,7 +71,7 @@ openssl dhparam -out /etc/letsencrypt/dhparams.pem 4096
 wget https://openresty.org/download/openresty-${OPENRESTY_VERSION}.tar.gz -O /data/openresty-${OPENRESTY_VERSION}.tar.gz
 cd /data/ && tar zxf openresty-${OPENRESTY_VERSION}.tar.gz
 cd /data/openresty-${OPENRESTY_VERSION} \
-&& ./configure --prefix=/opt/openresty-${OPENRESTY_VERSION} --with-luajit --with-http_iconv_module \
+&& ./configure --prefix=/opt/openresty-${OPENRESTY_VERSION} --with-luajit --with-http_iconv_module --with-http_v2_module \
 && gmake \
 && gmake install
 ln -s /opt/openresty-${OPENRESTY_VERSION} /opt/openresty
