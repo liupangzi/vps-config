@@ -1,6 +1,6 @@
 #!/bin/sh
 
-OPENRESTY_VERSION="1.11.2.2"
+OPENRESTY_VERSION="1.11.2.4"
 PHP_VERSION="7.1.7"
 
 yum install -y epel-release
