@@ -59,12 +59,35 @@ git clone https://github.com/letsencrypt/letsencrypt /opt/letsencrypt
     -d www.liuchao.me \
     -d 404.liuchao.me \
     -d blog.liuchao.me \
-    -d tech.liuchao.me \
-    -d 718281828459045235.com \
-    -d 2.718281828459045235.com \
+    -d tech.liuchao.me
+
+/opt/letsencrypt/letsencrypt-auto certonly \
+    --text \
+    --agree-tos \
+    --quiet \
+    --non-interactive \
+    --authenticator standalone \
+    --renew-by-default \
+    --rsa-key-size 4096 \
+    --email thesedays@126.com \
+    --hsts \
     -d justice.plus \
     -d www.justice.plus \
     -d admin.justice.plus
+
+/opt/letsencrypt/letsencrypt-auto certonly \
+    --text \
+    --agree-tos \
+    --quiet \
+    --non-interactive \
+    --authenticator standalone \
+    --renew-by-default \
+    --rsa-key-size 4096 \
+    --email thesedays@126.com \
+    --hsts \
+    -d 718281828459045235.com \
+    -d 2.718281828459045235.com
+
 openssl dhparam -out /etc/letsencrypt/dhparams.pem 4096
 
 # install openresty
