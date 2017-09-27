@@ -7,3 +7,4 @@
         ci = commit
         ps = push
         pl = pull
+        br = branch
