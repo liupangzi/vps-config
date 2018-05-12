@@ -15,44 +15,32 @@
 
 # MySQL
 
-- Follow [this instruction](https://www.percona.com/doc/percona-server/LATEST/installation/apt_repo.html#installing-percona-server-on-debian-and-ubuntu) to install Percona Server.
+- Install MySQL server:
+```bash
+# apt install -y mysql-server
 
-- Update MySQL:
-```
-mysql> CREATE DATABASE blog_justice_plus;
-mysql> CREATE DATABASE tech_justice_plus;
-mysql> ALTER USER 'liuchao'@'%' IDENTIFIED BY 'liuchao';
-mysql> GRANT ALL on `blog_liuchao_me`.* to 'liuchao'@'%';
-mysql> GRANT ALL on `tech_liuchao_me`.* to 'liuchao'@'%';
-mysql> FLUSH PRIVILEGES;
-```
+# mysql_secure_installation
+> root / root
 
-- Update `/etc/mysql/percona-server.conf.d/mysqld.cnf`:
-<pre>
-+ bind-address = <b><i>127.0.0.1</i></b>
-</pre>
-
-- Restart Percona Server:
-```
 # /etc/init.d/mysql restart
 ```
 
 - Recover from backups:
 ```
-# mysql -uroot < /root/vps-config/mysql/liuchao.me.sql
+# mysql -uroot -p < /root/vps-config/mysql/liuchao.me.sql
 ```
 
 # PHP
 
-- Install PHP 7.1
+- Install PHP 7.2
 ```bash
-# apt install -y python-software-properties
 # add-apt-repository -y ppa:ondrej/php
-# apt update -y
-# apt install -y php7.1-xml php7.1-mbstring php7.1-zip php7.1-mysql php7.1 php7.1-opcache php7.1-json php7.1-xmlrpc php7.1-curl php7.1-bz2 php7.1-cgi php7.1-cli php7.1-fpm php7.1-gmp php7.1-common php7.1-bcmath php7.1-mcrypt php7.1-gd
+# apt update && apt upgrade
+# apt install -y php7.2-xml php7.2-mbstring php7.2-zip php7.2-mysql php7.2 php7.2-opcache php7.2-json php7.2-xmlrpc php7.2-curl php7.2-bz2 php7.2-cgi php7.2-cli php7.2-fpm php7.2-gmp php7.2-common php7.2-bcmath php7.2-gd
+# update-alternatives --set php /usr/bin/php7.2
 ```
 
-- Edit `/etc/php/7.1/fpm/pool.d/www.conf` to change PHP-FPM from listening on unix socket to listening on TCP/IP port:
+- Edit `/etc/php/7.2/fpm/pool.d/www.conf` to change PHP-FPM from listening on unix socket to listening on TCP/IP port:
 ```bash
 - listen = /run/php/php7.1-fpm.sock
 + listen = 127.0.0.1:9000
@@ -60,14 +48,13 @@ mysql> FLUSH PRIVILEGES;
 
 - Start PHP-FPM
 ```bash
-# /etc/init.d/php7.1-fpm start
+# /etc/init.d/php7.2-fpm start
 ```
 
 # Redis
 
 - Install Redis
 ```bash
-# apt install -y software-properties-common
 # add-apt-repository ppa:chris-lea/redis-server
 # apt update -y
 # apt install -y redis-server
@@ -75,7 +62,7 @@ mysql> FLUSH PRIVILEGES;
 
 - Update `/etc/redis/redis.conf`:
 <pre>
-bind <b><i>127.0.0.1</i></b>
+bind bind 127.0.0.1 <del>::1</del>
 </pre>
 
 - Restart Redis:
