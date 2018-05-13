@@ -8,8 +8,6 @@
 
 # OS
 ```bash
-# rm /etc/sysctl.conf && ln -s /root/vps-config/os/sysctl.conf /etc/sysctl.conf
-# rm /root/.bashrc && ln -s /root/vps-config/os/dotbashrc /root/.bashrc && source /root/.bashrc
 # ln -s /root/vps-config/os/dotgitconfig /root/.gitconfig
 ```
 
@@ -35,7 +33,7 @@
 - Install PHP 7.2
 ```bash
 # add-apt-repository -y ppa:ondrej/php
-# apt update && apt upgrade
+# apt update && apt upgrade -y
 # apt install -y php7.2-xml php7.2-mbstring php7.2-zip php7.2-mysql php7.2 php7.2-opcache php7.2-json php7.2-xmlrpc php7.2-curl php7.2-bz2 php7.2-cgi php7.2-cli php7.2-fpm php7.2-gmp php7.2-common php7.2-bcmath php7.2-gd
 # update-alternatives --set php /usr/bin/php7.2
 ```
@@ -56,13 +54,13 @@
 - Install Redis
 ```bash
 # add-apt-repository ppa:chris-lea/redis-server
-# apt update -y
+# apt update
 # apt install -y redis-server
 ```
 
 - Update `/etc/redis/redis.conf`:
 <pre>
-bind bind 127.0.0.1 <del>::1</del>
+bind 127.0.0.1 <del>::1</del>
 </pre>
 
 - Restart Redis:
@@ -105,21 +103,17 @@ bind bind 127.0.0.1 <del>::1</del>
 # openssl dhparam -out /etc/letsencrypt/dhparams.pem 4096
 ```
 
-# Openresty
+# Nginx
 
-- Install Openresty
+- Install Nginx
 ```bash
-# wget -qO - https://openresty.org/package/pubkey.gpg | apt-key add -
-# apt -y install software-properties-common
-# add-apt-repository -y "deb http://openresty.org/package/ubuntu $(lsb_release -sc) main"
-# apt update -y
-# apt install -y openresty
+# apt install -y nginx
 ```
 
 - Update conf
 ```bash
-# cd /usr/local/openresty/nginx/conf
-# rm nginx.conf && ln -s /root/vps-config/openresty/conf/nginx.conf nginx.conf
+# cd /etc/nginx
+# mv nginx.conf nginx.conf.back && ln -s /root/vps-config/openresty/conf/nginx.conf nginx.conf
 # ln -s /root/vps-config/openresty/conf/servers servers
 ```
 
