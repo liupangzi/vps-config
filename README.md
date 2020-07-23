@@ -30,30 +30,31 @@
 
 # PHP
 
-- Install PHP 7.2
+- Install PHP 7.4
 ```bash
-# add-apt-repository -y ppa:ondrej/php
+# apt -y install lsb-release apt-transport-https ca-certificates wget
+# wget -O /etc/apt/trusted.gpg.d/php.gpg https://packages.sury.org/php/apt.gpg
+# echo "deb https://packages.sury.org/php/ $(lsb_release -sc) main" | sudo tee /etc/apt/sources.list.d/php.list
 # apt update && apt upgrade -y
-# apt install -y php7.2-xml php7.2-mbstring php7.2-zip php7.2-mysql php7.2 php7.2-opcache php7.2-json php7.2-xmlrpc php7.2-curl php7.2-bz2 php7.2-cgi php7.2-cli php7.2-fpm php7.2-gmp php7.2-common php7.2-bcmath php7.2-gd
-# update-alternatives --set php /usr/bin/php7.2
+# apt install -y php7.4-xml php7.4-mbstring php7.4-zip php7.4-mysql php7.4 php7.4-opcache php7.4-json php7.4-curl php7.4-bz2 php7.4-cgi php7.4-cli php7.4-fpm php7.4-gmp php7.4-common php7.4-bcmath php7.4-gd
+# update-alternatives --set php /usr/bin/php7.4
 ```
 
-- Edit `/etc/php/7.2/fpm/pool.d/www.conf` to change PHP-FPM from listening on unix socket to listening on TCP/IP port:
+- Edit `/etc/php/7.4/fpm/pool.d/www.conf` to change PHP-FPM from listening on unix socket to listening on TCP/IP port:
 ```bash
-- listen = /run/php/php7.1-fpm.sock
+- listen = /run/php/php7.4-fpm.sock
 + listen = 127.0.0.1:9000
 ``` 
 
 - Start PHP-FPM
 ```bash
-# /etc/init.d/php7.2-fpm start
+# /etc/init.d/php7.4-fpm start
 ```
 
 # Redis
 
 - Install Redis
 ```bash
-# add-apt-repository ppa:chris-lea/redis-server
 # apt update
 # apt install -y redis-server
 ```
@@ -88,11 +89,11 @@ bind 127.0.0.1 <del>::1</del>
 - Update conf
 ```bash
 # cd /etc/nginx
-# mv nginx.conf nginx.conf.back && ln -s /root/vps-config/openresty/conf/nginx.conf nginx.conf
-# ln -s /root/vps-config/openresty/conf/servers servers
+# mv nginx.conf nginx.conf.back && ln -s /root/vps-config/nginx/conf/nginx.conf nginx.conf
+# ln -s /root/vps-config/nginx/conf/servers servers
 ```
 
-- Restart Openresty:
+- Restart Nginx:
 ```bash
-# /etc/init.d/openresty restart
+# /etc/init.d/nginx restart
 ```
