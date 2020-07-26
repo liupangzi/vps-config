@@ -6,5 +6,5 @@
         co = checkout
         ci = commit
         ps = push
-        pl = pull
+        pl = pull --rebase
         br = branch
