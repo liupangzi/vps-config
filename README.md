@@ -99,5 +99,6 @@ systemctl status nginx
 
 # Tiny Tiny RSS
 ```bash
-sudo -u www-data  php ./update.php --update-schema
+# crontab:
+sudo -u www-data /usr/bin/php /var/www/liuchao.me/rss/update.php --feeds
 ```
