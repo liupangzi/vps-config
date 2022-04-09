@@ -36,17 +36,17 @@ systemctl status postgresql
 
 # PHP
 
-- Install PHP 8.1
+- Install PHP 7.4
 ```bash
 apt -y install lsb-release apt-transport-https ca-certificates wget
 wget -O /etc/apt/trusted.gpg.d/php.gpg https://packages.sury.org/php/apt.gpg
 echo "deb https://packages.sury.org/php/ $(lsb_release -sc) main" | sudo tee /etc/apt/sources.list.d/php.list
 apt update && apt upgrade -y
-apt install -y php8.1-xml php8.1-mbstring php8.1-zip php8.1-mysql php8.1 php8.1-opcache php8.1-curl php8.1-bz2 php8.1-cgi php8.1-cli php8.1-fpm php8.1-gmp php8.1-common php8.1-bcmath php8.1-gd php-imagick
-update-alternatives --set php /usr/bin/php8.1
+apt install -y php7.4-xml php7.4-mbstring php7.4-zip php7.4-mysql php7.4 php7.4-opcache php7.4-curl php7.4-bz2 php7.4-cgi php7.4-cli php7.4-fpm php7.4-gmp php7.4-common php7.4-bcmath php7.4-gd php-imagick
+update-alternatives --set php /usr/bin/php7.4
 ```
 
-- Edit `/etc/php/8.1/fpm/pool.d/www.conf` to change PHP-FPM from listening on unix socket to listening on TCP/IP port:
+- Edit `/etc/php/7.4/fpm/pool.d/www.conf` to change PHP-FPM from listening on unix socket to listening on TCP/IP port:
 ```bash
 - listen = /run/php/php7.4-fpm.sock
 + listen = 127.0.0.1:9000
@@ -54,8 +54,8 @@ update-alternatives --set php /usr/bin/php8.1
 
 - Start PHP-FPM
 ```bash
-systemctl restart php8.1-fpm
-systemctl status php8.1-fpm
+systemctl restart php7.4-fpm
+systemctl status php7.4-fpm
 ```
 
 # Redis
