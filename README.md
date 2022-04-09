@@ -16,11 +16,22 @@ ln -s /root/vps-config/os/dotgitconfig /root/.gitconfig
 - Install MySQL server:
 ```bash
 apt install -y default-mysql-server
-
-# mysql_secure_installation
+mysql_secure_installation
 > root / root
+systemctl restart mariadb
+systemctl status mariadb
+```
 
-# /etc/init.d/mariadb restart
+# PostgreSQL
+```bash
+apt update && sudo apt upgrade
+apt install -y curl apt-transport-https
+curl -fsSL https://www.postgresql.org/media/keys/ACCC4CF8.asc | sudo gpg --dearmor -o /usr/share/keyrings/postgresql-keyring.gpg
+echo "deb [signed-by=/usr/share/keyrings/postgresql-keyring.gpg] http://apt.postgresql.org/pub/repos/apt/ bullseye-pgdg main" | sudo tee /etc/apt/sources.list.d/postgresql.list
+apt update
+apt install -y postgresql-13
+systemctl restart postgresql
+systemctl status postgresql
 ```
 
 # PHP
@@ -43,7 +54,8 @@ update-alternatives --set php /usr/bin/php8.1
 
 - Start PHP-FPM
 ```bash
-/etc/init.d/php8.1-fpm start
+systemctl restart php8.1-fpm
+systemctl status php8.1-fpm
 ```
 
 # Redis
@@ -61,7 +73,8 @@ bind 127.0.0.1 <del>::1</del>
 
 - Restart Redis:
 ```bash
-/etc/init.d/redis-server restart
+systemctl restart redis
+systemctl status redis
 ```
 
 # Nginx
@@ -80,5 +93,6 @@ ln -s /root/vps-config/nginx/conf/servers servers
 
 - Restart Nginx:
 ```bash
-/etc/init.d/nginx restart
+systemctl restart nginx
+systemctl status nginx
 ```
