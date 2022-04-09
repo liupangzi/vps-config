@@ -96,3 +96,8 @@ ln -s /root/vps-config/nginx/conf/servers servers
 systemctl restart nginx
 systemctl status nginx
 ```
+
+# Tiny Tiny RSS
+```bash
+sudo -u www-data  php ./update.php --update-schema
+```
