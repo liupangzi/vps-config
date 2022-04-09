@@ -69,16 +69,6 @@ bind 127.0.0.1 <del>::1</del>
 # /etc/init.d/redis-server restart
 ```
 
-# Letsencrypt
-```bash
-# git clone https://github.com/certbot/certbot /opt/certbot
-
-# /opt/certbot/certbot-auto certonly --manual -d *.718281828459045235.com -d 718281828459045235.com --agree-tos --manual-public-ip-logging-ok --preferred-challenges dns-01 --server https://acme-v02.api.letsencrypt.org/directory
-# /opt/certbot/certbot-auto certonly --manual -d *.chaos.plus -d chaos.plus --agree-tos --manual-public-ip-logging-ok --preferred-challenges dns-01 --server https://acme-v02.api.letsencrypt.org/directory
-# /opt/certbot/certbot-auto certonly --manual -d *.liuchao.me -d liuchao.me --agree-tos --manual-public-ip-logging-ok --preferred-challenges dns-01 --server https://acme-v02.api.letsencrypt.org/directory
-# openssl dhparam -out /etc/letsencrypt/dhparams.pem 4096
-```
-
 # Nginx
 
 - Install Nginx
