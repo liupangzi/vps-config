@@ -29,7 +29,7 @@ apt install -y curl apt-transport-https
 curl -fsSL https://www.postgresql.org/media/keys/ACCC4CF8.asc | sudo gpg --dearmor -o /usr/share/keyrings/postgresql-keyring.gpg
 echo "deb [signed-by=/usr/share/keyrings/postgresql-keyring.gpg] http://apt.postgresql.org/pub/repos/apt/ bullseye-pgdg main" | sudo tee /etc/apt/sources.list.d/postgresql.list
 apt update
-apt install -y postgresql-13
+apt install -y postgresql-14
 systemctl restart postgresql
 systemctl status postgresql
 ```
